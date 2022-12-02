@@ -1,10 +1,175 @@
+@font-face {
+  font-family: "ShareTechMono";
+  src: url("assets/fonts/ShareTechMono-Regular.ttf");
+}
+
+:root {
+  --font: "ShareTechMono", Arial, Helvetica, sans-serif;
+
+  --color-dark: rgb(100, 58, 143);
+  --color-white: white;
+  --color-light: rgb(252, 239, 252);
+  --color-bg: thistle;
+  --color-output: violet;
+
+  --color-hover: var(--color-light);
+
+  --card-padding: 24px;
+  --card-border-radius: 12px;
+  --card-color-light: var(--color-white);
+  --card-color-dark: var(--color-dark);
+}
+
+::selection {
+  color: var(--color-output);
+  background: var(--color-bg);
+}
+
 body {
-  background-color:thistle;
+  background-color: var(--color-bg);
+  font-family: var(--font);
+}
+
+h1#pageTitle {
+  margin: 75px 0;
 }
 
 #app {
-  max-width: 1280px;
+  max-width: 820px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+.card {
+  background-color: var(--card-color-light);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  overflow: hidden;
+}
+
+.card.dark {
+  background-color: var(--card-color-dark);
+}
+
+#billForm > *:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+#tipSelector {
+  margin-top: 8px;
+}
+#tipSelector button {
+  width:100%;
+  background-color: var(--color-dark);
+  border: 0;
+  border-radius: 4px;
+  height: 40px;
+  color: var(--color-white);
+  font-family: var(--font);
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+}
+#tipSelector button:hover,
+#tipSelector button.active {
+  background-color: var(--color-bg);
+}
+
+label,
+#tipSelectorTitle {
+  display: block;
+  position: relative;
+  text-align: left;
+  font-size: small;
+  font-weight: bold;
+  color: var(--card-color-dark);
+}
+label input {
+  margin: 8px 0 0 0;
+  position: relative;
+  display: block;
+  border: none;
+  text-align: end;
+  font-family: var(--font);
+  height: 40px;
+  background-color: var(--color-hover);
+  border-radius: 4px;
+  color: var(--color-dark);
+  font-size: large;
+  font-weight: bold;
+  width: 100%;
+}
+label input:focus {
+  outline: 2px solid var(--color-bg);
+}
+
+.outputLabel {
+  color: var(--color-white);
+  text-align: left;
+  font-weight: bold;
+}
+.outputLabel small {
+  color: var(--color-output);
+  font-weight: normal;
+}
+.outputValue {
+  text-align: right;
+  color: var(--color-output);
+  font-size: 26pt;
+}
+
+/* Hide number input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.row {
+  display: flex;
+}
+.row .col:not(:last-child) {
+  margin-right: var(--card-padding);
+}
+.col {
+  flex: 1;
+}
+
+#resultsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  position: relative;
+}
+
+#outputValuesContainer > *:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+button#resetButton {
+  height: 40px;
+  line-height: 40px;
+  font-size: medium;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-family: var(--font);
+  color: var(--color-dark);
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+button#resetButton:disabled {
+  pointer-events: none;
+  cursor: default;
+}
+button#resetButton:hover {
+  background-color: var(--color-hover);
 }
