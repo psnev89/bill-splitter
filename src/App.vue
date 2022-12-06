@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import AppInput from "./components/AppInput.vue";
 import TipSelector from "./components/TipSelector.vue";
 import ValueDisplay from "./components/ValueDisplay.vue";
+import AppCard from "./components/AppCard.vue";
 
 const tipsOptions = [5, 10, 15, 20];
 const bill = ref(null);
@@ -41,7 +42,7 @@ const reset = () => {
 
 <template>
   <h1 id="pageTitle">{{ pageTitle }}</h1>
-  <article class="card">
+  <AppCard>
     <div class="row">
       <div id="billForm" class="col">
         <AppInput label="Bill" v-model="bill"></AppInput>
@@ -52,7 +53,7 @@ const reset = () => {
         <AppInput label="Number of People" v-model="numberOfPeople"></AppInput>
       </div>
       <div class="col">
-        <div id="resultsContainer" class="card dark">
+        <AppCard id="resultsContainer" dark>
           <div id="outputValuesContainer">
             <ValueDisplay
               label="Tip Amount"
@@ -66,8 +67,8 @@ const reset = () => {
             ></ValueDisplay>
           </div>
           <button id="resetButton" type="button" @click="reset">Reset</button>
-        </div>
+        </AppCard>
       </div>
     </div>
-  </article>
+  </AppCard>
 </template>

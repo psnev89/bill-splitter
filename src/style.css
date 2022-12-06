@@ -41,17 +41,6 @@ h1#pageTitle {
   text-align: center;
 }
 
-.card {
-  background-color: var(--card-color-light);
-  border-radius: var(--card-border-radius);
-  padding: var(--card-padding);
-  overflow: hidden;
-}
-
-.card.dark {
-  background-color: var(--card-color-dark);
-}
-
 #billForm > *:not(:last-child) {
   margin-bottom: 32px;
 }
