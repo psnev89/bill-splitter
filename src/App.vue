@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import AppInput from "./components/AppInput.vue";
+import TipSelector from "./components/TipSelector.vue";
 
 const tipsOptions = [5, 10, 15, 20];
 const bill = ref(null);
@@ -35,9 +36,6 @@ const reset = () => {
   bill.value = null;
   numberOfPeople.value = null;
 };
-const setTipPercent = (value) => {
-  tipPercent.value = tipPercent.value === value ? null : value;
-};
 </script>
 
 <template>
@@ -45,32 +43,12 @@ const setTipPercent = (value) => {
   <article class="card">
     <div class="row">
       <div id="billForm" class="col">
-        <AppInput
-          label="Bill"
-          v-model="bill"
-        ></AppInput>
-        <div>
-          <div id="tipSelectorTitle">Tip %</div>
-          <div id="tipSelector" class="row">
-            <div
-              v-for="(option, index) in tipsOptions"
-              :key="`tip-${index}`"
-              class="col"
-            >
-              <button
-                type="button"
-                :class="{ active: option === tipPercent }"
-                @click="setTipPercent(option)"
-              >
-                {{ option }}%
-              </button>
-            </div>
-          </div>
-        </div>
-        <AppInput
-          label="Number of People"
-          v-model="numberOfPeople"
-        ></AppInput>
+        <AppInput label="Bill" v-model="bill"></AppInput>
+
+        <TipSelector v-model="tipPercent" :tips-options="tipsOptions">
+        </TipSelector>
+
+        <AppInput label="Number of People" v-model="numberOfPeople"></AppInput>
       </div>
       <div class="col">
         <div id="resultsContainer" class="card dark">

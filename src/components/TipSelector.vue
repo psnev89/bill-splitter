@@ -25,7 +25,9 @@ defineEmits(["update:modelValue", "tipSelection"]);
         <button
           type="button"
           :class="{ active: option === modelValue }"
-          @click="$emit('tipSelection', option)"
+          @click="
+            $emit('update:modelValue', option === modelValue ? null : option)
+          "
         >
           {{ option }}%
         </button>
@@ -33,3 +35,35 @@ defineEmits(["update:modelValue", "tipSelection"]);
     </div>
   </div>
 </template>
+
+<style scoped>
+#tipSelector {
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+#tipSelector button {
+  width: 100%;
+  background-color: var(--color-dark);
+  border: 0;
+  border-radius: 4px;
+  height: 40px;
+  color: var(--color-white);
+  font-family: var(--font);
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+}
+#tipSelector button:hover,
+#tipSelector button.active {
+  background-color: var(--color-bg);
+}
+
+#tipSelectorTitle {
+  display: block;
+  position: relative;
+  text-align: left;
+  font-size: small;
+  font-weight: bold;
+  color: var(--card-color-dark);
+}
+</style>
