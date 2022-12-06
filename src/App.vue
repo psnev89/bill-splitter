@@ -1,41 +1,30 @@
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import AppInput from "./components/AppInput.vue";
 import TipSelector from "./components/TipSelector.vue";
 import ValueDisplay from "./components/ValueDisplay.vue";
 import AppCard from "./components/AppCard.vue";
+import { useTips } from "./hooks/useTips";
+import { useBill } from "./hooks/useBill";
+import { useFormatters } from "./hooks/useFormatters";
 
-const tipsOptions = [5, 10, 15, 20];
-const bill = ref(null);
-const numberOfPeople = ref(null);
-const tipPercent = ref(null);
-const formatter = new Intl.NumberFormat("pt-PT", {
-  style: "currency",
-  currency: "EUR",
-  maximumFractionDigits: 2,
-  minimumFractionDigits: 2,
-});
+const { tipsOptions } = useTips();
+const { tip, numberOfPeople, bill, tipAmountPerPerson, totalAmountPerPerson } =
+  useBill();
 
-const tipAmountPerPerson = computed(() => {
-  const amount = (bill.value * (tipPercent.value / 100)) / numberOfPeople.value;
-  return isNaN(amount) || !numberOfPeople.value ? 0 : amount;
-});
+const { formatCurrency } = useFormatters();
 const tipAmountPerPersonDisplay = computed(() => {
-  return formatter.format(tipAmountPerPerson.value);
-});
-
-const totalAmountPerPerson = computed(() => {
-  const amount =
-    (bill.value * (tipPercent.value / 100 + 1)) / numberOfPeople.value;
-  return isNaN(amount) || !numberOfPeople.value ? 0 : amount;
+  return formatCurrency(tipAmountPerPerson.value);
 });
 const totalAmountPerPersonDisplay = computed(() => {
-  return formatter.format(totalAmountPerPerson.value);
+  return formatCurrency(totalAmountPerPerson.value);
 });
 
 const pageTitle = `Bill Splitter`;
+
 const reset = () => {
   bill.value = null;
+  tip.value = null;
   numberOfPeople.value = null;
 };
 </script>
@@ -47,8 +36,7 @@ const reset = () => {
       <div id="billForm" class="col">
         <AppInput label="Bill" v-model="bill"></AppInput>
 
-        <TipSelector v-model="tipPercent" :tips-options="tipsOptions">
-        </TipSelector>
+        <TipSelector v-model="tip" :tips-options="tipsOptions"> </TipSelector>
 
         <AppInput label="Number of People" v-model="numberOfPeople"></AppInput>
       </div>
