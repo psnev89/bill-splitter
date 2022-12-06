@@ -56,21 +56,6 @@ h1#pageTitle {
   margin-bottom: 32px;
 }
 
-.outputLabel {
-  color: var(--color-white);
-  text-align: left;
-  font-weight: bold;
-}
-.outputLabel small {
-  color: var(--color-output);
-  font-weight: normal;
-}
-.outputValue {
-  text-align: right;
-  color: var(--color-output);
-  font-size: 26pt;
-}
-
 .row {
   display: flex;
 }

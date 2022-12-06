@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import AppInput from "./components/AppInput.vue";
 import TipSelector from "./components/TipSelector.vue";
+import ValueDisplay from "./components/ValueDisplay.vue";
 
 const tipsOptions = [5, 10, 15, 20];
 const bill = ref(null);
@@ -53,14 +54,16 @@ const reset = () => {
       <div class="col">
         <div id="resultsContainer" class="card dark">
           <div id="outputValuesContainer">
-            <div>
-              <div class="outputLabel">Tip Amount <small>/ person</small></div>
-              <div class="outputValue">{{ tipAmountPerPersonDisplay }}</div>
-            </div>
-            <div>
-              <div class="outputLabel">Total <small>/ person</small></div>
-              <div class="outputValue">{{ totalAmountPerPersonDisplay }}</div>
-            </div>
+            <ValueDisplay
+              label="Tip Amount"
+              label-hint="/ person"
+              :value="tipAmountPerPersonDisplay"
+            ></ValueDisplay>
+            <ValueDisplay
+              label="Total"
+              label-hint="/ person"
+              :value="totalAmountPerPersonDisplay"
+            ></ValueDisplay>
           </div>
           <button id="resetButton" type="button" @click="reset">Reset</button>
         </div>
