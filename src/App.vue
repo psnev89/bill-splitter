@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import AppInput from "./components/AppInput.vue";
 
 const tipsOptions = [5, 10, 15, 20];
 const bill = ref(null);
@@ -44,10 +45,10 @@ const setTipPercent = (value) => {
   <article class="card">
     <div class="row">
       <div id="billForm" class="col">
-        <label class="input">
-          Bill
-          <input type="number" v-model="bill" placeholder="0" />
-        </label>
+        <AppInput
+          label="Bill"
+          v-model="bill"
+        ></AppInput>
         <div>
           <div id="tipSelectorTitle">Tip %</div>
           <div id="tipSelector" class="row">
@@ -66,10 +67,10 @@ const setTipPercent = (value) => {
             </div>
           </div>
         </div>
-        <label class="input">
-          Number of People
-          <input type="number" v-model="numberOfPeople" placeholder="0" />
-        </label>
+        <AppInput
+          label="Number of People"
+          v-model="numberOfPeople"
+        ></AppInput>
       </div>
       <div class="col">
         <div id="resultsContainer" class="card dark">
