@@ -47,9 +47,7 @@ h1#pageTitle {
 
 .row {
   display: flex;
-}
-.row .col:not(:last-child) {
-  margin-right: var(--card-padding);
+  gap: calc(var(--card-padding) / 2) var(--card-padding);
 }
 .col {
   flex: 1;
@@ -95,4 +93,13 @@ button#resetButton:hover {
 button#resetButton:active {
   background-color: var(--color-bg);
   color: var(--color-white);
+}
+
+@media only screen and (max-width: 670px) {
+  #mainContent {
+    flex-direction: column;
+  }
+  #mainContent #billForm {
+    margin-bottom: var(--card-padding);
+  }
 }

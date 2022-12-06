@@ -32,7 +32,7 @@ const reset = () => {
 <template>
   <h1 id="pageTitle">{{ pageTitle }}</h1>
   <AppCard>
-    <div class="row">
+    <div id="mainContent" class="row">
       <div id="billForm" class="col">
         <AppInput label="Bill" v-model="bill"></AppInput>
 

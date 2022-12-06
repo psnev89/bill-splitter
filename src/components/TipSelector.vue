@@ -66,4 +66,10 @@ defineEmits(["update:modelValue", "tipSelection"]);
   font-weight: bold;
   color: var(--card-color-dark);
 }
+
+@media only screen and (max-width: 450px) {
+    #tipSelector .col {
+    flex: 100%;
+  }
+}
 </style>
