@@ -100,6 +100,8 @@ label input {
   font-size: large;
   font-weight: bold;
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
 label input:focus {
   outline: 2px solid var(--color-bg);
@@ -148,7 +150,9 @@ input[type="number"] {
   flex-direction: column;
   justify-content: space-between;
   min-height: 200px;
+  height: 100%;
   position: relative;
+  box-sizing: border-box;
 }
 
 #outputValuesContainer > *:not(:last-child) {
@@ -176,4 +180,9 @@ button#resetButton:disabled {
 }
 button#resetButton:hover {
   background-color: var(--color-hover);
+  color: var(--color-dark);
+}
+button#resetButton:active {
+  background-color: var(--color-bg);
+  color: var(--color-white);
 }
